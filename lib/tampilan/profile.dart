@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class profile_view extends StatelessWidget {
@@ -7,7 +8,7 @@ class profile_view extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -24,24 +25,11 @@ class profile extends StatefulWidget {
 }
 
 class _myprofile extends State<profile> {
-  int _clickindex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'profile',
-            ),
-            Text(
-              '$_clickindex',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      appBar: AppBar(
+        title: Text("Profile"),
       ),
     );
   }

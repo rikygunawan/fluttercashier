@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tampilan/home.dart';
 import 'package:flutter_application_1/tampilan/report.dart';
 import 'package:flutter_application_1/tampilan/mainnavigation.dart';
 
@@ -14,11 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'HOME'),
+      home: const MyHomePage(),
     );
   }
 }

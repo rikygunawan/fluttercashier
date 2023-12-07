@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class report_view extends StatelessWidget {
@@ -7,7 +8,7 @@ class report_view extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -28,19 +29,9 @@ class _myreport extends State<report> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: (() {
-            setState(() {
-              _clickindex++;
-            });
-          }),
-          child: const Icon(Icons.add),
-        ),
-        body: Center(
-          child: Text(
-            '$_clickindex',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-        ));
+      appBar: AppBar(
+        title: Text("Report"),
+      ),
+    );
   }
 }
