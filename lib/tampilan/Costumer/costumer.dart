@@ -55,6 +55,7 @@ class _costumerStateview extends State<costumerview> {
               child: ListTile(
                 title: Text(_listdata[index]['nama']),
                 subtitle: Text(_listdata[index]['alamat']),
+                trailing: Text(_listdata[index]['nomorhp']),
               ),
             );
           }),
