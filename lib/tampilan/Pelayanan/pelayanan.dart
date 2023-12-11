@@ -2,23 +2,24 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_application_1/tampilan/Costumer/costumeradd.dart';
+import 'package:flutter_application_1/tampilan/Pelayanan/pelayananadd.dart';
 import 'package:http/http.dart' as http;
 
-class costumerview extends StatefulWidget {
-  const costumerview({Key? key}) : super(key: key);
+class pelayananview extends StatefulWidget {
+  const pelayananview({Key? key}) : super(key: key);
 
   @override
-  State<costumerview> createState() => _costumerStateview();
+  State<pelayananview> createState() => _pelayananviewState();
 }
 
-class _costumerStateview extends State<costumerview> {
+class _pelayananviewState extends State<pelayananview> {
+  @override
   List _listdata = [];
 
   Future _getdata() async {
     try {
       final Response = await http.get(Uri.parse(
-          'http://192.168.1.55/flutterapi/skycashier/readcostumer.php'));
+          'http://192.168.1.55/flutterapi/skycashier/readpelayanan.php'));
       if (Response.statusCode == 200) {
         final data = jsonDecode(Response.body);
         setState(() {
@@ -30,17 +31,15 @@ class _costumerStateview extends State<costumerview> {
     }
   }
 
-  @override
   void initState() {
     _getdata();
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Costumer List"),
+        title: Text("Pelayanan List"),
         actions: [
           IconButton(
             onPressed: () {},
@@ -53,9 +52,8 @@ class _costumerStateview extends State<costumerview> {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                title: Text(_listdata[index]['nama']),
-                subtitle: Text(_listdata[index]['alamat']),
-                trailing: Text(_listdata[index]['nomorhp']),
+                title: Text(_listdata[index]['jenislayanan']),
+                trailing: Text(_listdata[index]['harga']),
               ),
             );
           }),
@@ -64,7 +62,7 @@ class _costumerStateview extends State<costumerview> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => costumeraddview(),
+              builder: (context) => pelayananaddview(),
             ),
           );
         }),

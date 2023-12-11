@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/tampilan/Costumer/costumer.dart';
+import 'package:flutter_application_1/tampilan/Pelayanan/pelayanan.dart';
 
 class home_view extends StatelessWidget {
   const home_view({Key? key}) : super(key: key);
@@ -51,7 +52,13 @@ class _myhome extends State<home> {
           Card(
             margin: const EdgeInsets.all(8),
             child: InkWell(
-              onTap: (() {}),
+              onTap: (() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const pelayananview()),
+                );
+              }),
               splashColor: Colors.blue,
               child: Center(
                 child: Column(

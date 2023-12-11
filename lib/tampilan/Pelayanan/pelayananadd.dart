@@ -6,26 +6,24 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/tampilan/Costumer/costumer.dart';
 import 'package:http/http.dart' as http;
 
-class costumeraddview extends StatefulWidget {
-  const costumeraddview({Key? key}) : super(key: key);
+class pelayananaddview extends StatefulWidget {
+  const pelayananaddview({Key? key}) : super(key: key);
 
   @override
-  State<costumeraddview> createState() => _costumeraddviewState();
+  State<pelayananaddview> createState() => _pelayananaddviewState();
 }
 
-class _costumeraddviewState extends State<costumeraddview> {
+class _pelayananaddviewState extends State<pelayananaddview> {
   final formKey = GlobalKey<FormState>();
-  TextEditingController nama = TextEditingController();
-  TextEditingController nomorhp = TextEditingController();
-  TextEditingController alamat = TextEditingController();
+  TextEditingController jenislayanan = TextEditingController();
+  TextEditingController harga = TextEditingController();
   Future _simpan() async {
     final Response = await http.post(
         Uri.parse(
-            "http://192.168.1.55/flutterapi/skycashier/insertcostumer.php"),
+            "http://192.168.1.55/flutterapi/skycashier/insertpelayanan.php"),
         body: {
-          "nama": nama.text,
-          "nomorhp": nomorhp.text,
-          "alamat": alamat.text,
+          "jenislayanan": jenislayanan.text,
+          "harga": harga.text,
         });
     if (Response.statusCode == 200) {
       return true;
@@ -45,14 +43,14 @@ class _costumeraddviewState extends State<costumeraddview> {
             padding: EdgeInsets.all(10),
             child: Column(children: [
               TextFormField(
-                controller: nama,
+                controller: jenislayanan,
                 decoration: InputDecoration(
-                    hintText: 'Nama',
+                    hintText: 'Jenis Layanan',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "Nama Tidak Boleh Kosong";
+                    return "Jenis Layanan Tidak Boleh Kosong";
                   }
                 },
               ),
@@ -60,24 +58,14 @@ class _costumeraddviewState extends State<costumeraddview> {
                 height: 10,
               ),
               TextFormField(
-                controller: nomorhp,
+                controller: harga,
                 decoration: InputDecoration(
-                    hintText: 'Nomor HP',
+                    hintText: 'Harga',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),
               ),
               SizedBox(
                 height: 10,
-              ),
-              TextFormField(
-                controller: alamat,
-                decoration: InputDecoration(
-                    hintText: 'Alamat',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
-              ),
-              SizedBox(
-                height: 25,
               ),
               ElevatedButton(
                   onPressed: () {
@@ -106,9 +94,8 @@ class _costumeraddviewState extends State<costumeraddview> {
                       //         builder: ((context) => costumerview())),
                       //     (route) => false);
                     }
-                    nama.clear();
-                    nomorhp.clear();
-                    alamat.clear();
+                    jenislayanan.clear();
+                    harga.clear();
                   },
                   child: Text('Simpan')),
             ]),
